@@ -20,8 +20,18 @@
     </div>
     <!-- main -->
     <div class="main">
-      <div class="file" v-for="element in arrayFilm"><p>{{element.original_title}}<</p>/div>
-      <div class="file" v-for="element in arraySerie"><p>{{element.original_name}}</p></div>
+      <div class="file" v-for="element in arrayFilm">
+        <p><span>Title: </span>{{element.title}}</p>
+        <p><span>Original Title: </span>{{element.original_title}}</p>
+        <p><span>Language: </span>{{element.original_language}}</p>
+        <p><span>Vote: </span>{{element.vote_average}}</p>
+      </div>
+      <div class="file" v-for="element in arraySerie">
+        <p><span>Title: </span>{{element.name}}</p>
+        <p><span>Original Title: </span>{{element.original_name}}</p>
+        <p><span>Language: </span>{{element.original_language}}</p>
+        <p><span>Vote: </span>{{element.vote_average}}</p>
+      </div>
     </div>
   </div>
 
