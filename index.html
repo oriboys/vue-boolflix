@@ -14,9 +14,14 @@
 
   <div id="cont">
     <!-- header -->
-    <div class="header"></div>
+    <div class="header">
+      <input type="text" name="" value="" v-model='ricerca' @keyup.enter='trova'>
+      <button type="button" name="button">Cerca</button>
+    </div>
     <!-- main -->
-    <div class="main"></div>
+    <div class="main">
+      <div class="file"></div>
+    </div>
   </div>
 
 <script type="text/javascript" src="js/script.js">
