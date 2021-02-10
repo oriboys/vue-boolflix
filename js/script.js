@@ -21,6 +21,10 @@ var nuovo = new Vue({
       .then((result) =>{
         this.arrayFilm = result.data.results
         console.log(this.arrayFilm);
+        this.arrayFilm.forEach((item, i) => {
+          item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
+          console.log(item.original_name);
+        });
       })
       .catch((error) => alert('errori'))
       axios
@@ -36,6 +40,7 @@ var nuovo = new Vue({
         this.arraySerie = result.data.results
         console.log(result.data.results);
         this.arraySerie.forEach((item, i) => {
+          item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
           console.log(item.original_name);
         });
 
