@@ -15,14 +15,13 @@
   <div id="cont">
     <!-- header -->
     <div class="header">
-      <input type="text" name="" value="" v-model='ricerca' @keyup.enter='trova'>
-      <button type="button" name="button">Cerca</button>
+      <input type="text" name="" value="" v-model='ricerca' >
+      <button @click='trova'type="button" name="button">Cerca</button>
     </div>
     <!-- main -->
     <div class="main">
-      <div class="file" v-for="element in arrayFilm">{{element.original_name}}</div>
-      <div class="file" v-for="element in arraySerie">{{element.original_name}}</div>
-
+      <div class="file" v-for="element in arrayFilm"><p>{{element.original_title}}<</p>/div>
+      <div class="file" v-for="element in arraySerie"><p>{{element.original_name}}</p></div>
     </div>
   </div>
 
