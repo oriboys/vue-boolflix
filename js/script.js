@@ -1,7 +1,9 @@
 var nuovo = new Vue({
   el:'#cont',
   data:{
-    ricerca: ''
+    ricerca: '',
+    arrayFilm: '',
+    arraySerie: ''
 
 
   },
@@ -17,20 +19,22 @@ var nuovo = new Vue({
         }
       })
       .then((result) =>{
-        console.log(result.data);
+        this.arrayFilm = result.data.results
+        console.log(this.arrayFilm);
       })
       .catch((error) => alert('errori'))
       axios
       .get('https://api.themoviedb.org/3/search/tv', {
         params: {
           api_key:'7b637101d1d50dc2f48259a676913f3c',
-          // devo mettere il nome della queri
+          // è ciò che mi viene ricercato all'interno
           query: this.ricerca,
           language: 'it-IT'
         }
       })
       .then((result) =>{
-        console.log(result.data);
+        this.arrayFilm = result.data.results
+        console.log(result.data.results);
       })
       .catch((error) => alert('errori'))
     }
