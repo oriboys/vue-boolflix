@@ -1,0 +1,24 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#cont{
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(22, 85, 45);
+}
+
+.header{
+  width: 100%;
+  height: 200px;
+  background-color: rgb(51, 131, 204);
+}
+
+.main{
+  width: 80%;
+  height: calc(100% - 200px);
+  background-color: rgb(31, 171, 53);
+  margin: auto;
+}
