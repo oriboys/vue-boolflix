@@ -33,8 +33,12 @@ var nuovo = new Vue({
         }
       })
       .then((result) =>{
-        this.arrayFilm = result.data.results
+        this.arraySerie = result.data.results
         console.log(result.data.results);
+        this.arraySerie.forEach((item, i) => {
+          console.log(item.original_name);
+        });
+
       })
       .catch((error) => alert('errori'))
     }
