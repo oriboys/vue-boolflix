@@ -7,28 +7,26 @@ var nuovo = new Vue({
     immagine: 'none',
     descr: 'none',
     indice: '',
-    type: '',
+    type: 'all',
     types: ['all']
 
 
   },
   mounted(){
     axios
-    .get('https://api.themoviedb.org/3/search/tv?api_key=7b637101d1d50dc2f48259a676913f3c&language=en-US&query=ma')
+    .get('https://api.themoviedb.org/3/genre/movie/list?api_key=7b637101d1d50dc2f48259a676913f3c&language=en-US')
     .then((result)=> {
-      this.type = result.data.results;
-      // this.cd = result.data.response
-      // console.log(this.cd);
-      this.type.forEach((element) =>{
-        console.log(element.genre_ids);
-        if (this.types.includes(element.genre_ids[0]) == false){
-          if (this.types.includes(element.genre_ids[0]) != 'undefined'){
-            this.types.push(element.genre_ids[0])
-          }
+      console.log(result.data.genres);
+      result.data.genres.forEach((item, i) => {
+        if(this.types.includes(item.id) == false){
+          this.types.push(item.id)
         }
       })
-        console.log(this.types);
+      console.log(this.types);
     })
+    // axios 
+    // .get('')
+    //
   },
   methods:{
     trova(){
@@ -128,7 +126,10 @@ var nuovo = new Vue({
       this.immagine = 'show'
     },
     seleziona(){
-
+      this.type = document.getElementById('opzione').value;
+      console.log(this.type);
+      this.type = parseInt(this.type)
+      console.log(this.type);
     }
 
   }
