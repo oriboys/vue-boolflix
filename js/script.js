@@ -6,9 +6,29 @@ var nuovo = new Vue({
     arraySerie: '',
     immagine: 'none',
     descr: 'none',
-    indice: ''
+    indice: '',
+    type: '',
+    types: ['all']
 
 
+  },
+  mounted(){
+    axios
+    .get('https://api.themoviedb.org/3/search/tv?api_key=7b637101d1d50dc2f48259a676913f3c&language=en-US&query=ma')
+    .then((result)=> {
+      this.type = result.data.results;
+      // this.cd = result.data.response
+      // console.log(this.cd);
+      this.type.forEach((element) =>{
+        console.log(element.genre_ids);
+        if (this.types.includes(element.genre_ids[0]) == false){
+          if (this.types.includes(element.genre_ids[0]) != 'undefined'){
+            this.types.push(element.genre_ids[0])
+          }
+        }
+      })
+        console.log(this.types);
+    })
   },
   methods:{
     trova(){
@@ -49,6 +69,7 @@ var nuovo = new Vue({
           for (var i = 0; i < item.vote_average; i++){
             item.stelle.push('stella')
           }
+
         });
       })
       .catch((error) => alert('errori'))
@@ -106,6 +127,9 @@ var nuovo = new Vue({
       this.descr = 'none'
       this.immagine = 'show'
     },
+    seleziona(){
+
+    }
 
   }
 })

@@ -16,10 +16,13 @@
   <div id="cont">
     <!-- header -->
     <div class="header">
-      <img src="        https://variety.com/wp-content/uploads/2020/05/netflix-logo.png" alt="">
+      <h1>BOOLFLIX</h1>
       <div class="selettore">
-        <input type="text" name="" value="" v-model='ricerca' >
+        <input @keyup.enter='trova'type="text" name="" value="" v-model='ricerca' >
         <button @click='trova'type="button" name="button">Cerca</button>
+        <select class="" name="">
+          <option v-for='tipi in types' value="">{{tipi}}</option>
+        </select>
       </div>
     </div>
     <!-- main -->
@@ -32,6 +35,7 @@
           <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
           <img class="bandiera" :src="element.original_language" alt="">
           <p class="voto"><span>Vote: </span> <span > <i class="fas fa-star" v-for='element in element.stelle'></i> </span></p>
+          <p class="trama">{{element.overview}}</p>
         </div>
       </div>
       <div class="file" v-for="(element, index) in arraySerie" @mouseover='descrizioneOn(index)' @mouseleave='descrizioneOff(index)'>
@@ -42,6 +46,8 @@
           <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
           <img class="bandiera" :src="element.original_language" alt="">
           <p class="voto"><span>Vote: </span> <span><i class="fas fa-star"  v-for='element in element.stelle' ></i> </span></p>
+          <p> <span>Actors: </span></p>
+          <p class="trama">{{element.overview}}</p>
         </div>
       </div>
     </div>
