@@ -22,8 +22,19 @@ var nuovo = new Vue({
         this.arrayFilm = result.data.results
         console.log(this.arrayFilm);
         this.arrayFilm.forEach((item, i) => {
-          item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
-          console.log(item.original_name);
+          // item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
+          if (item.poster_path == null){
+            item.poster_path = 'https://media.istockphoto.com/vectors/coming-soon-vector-template-design-vector-id984996502?k=6&m=984996502&s=612x612&w=0&h=wbMAxPZZRht9DPspDS1NvM4TLlBCCajXnJfSmcckqZ8='
+          } else{
+            item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
+          }
+          if (item.original_language == 'es'){
+            item.original_language = 'https://www.resolfin.com/wp-content/uploads/2018/02/spagna-100x150.png'
+          } else if (item.original_language == 'fr'){
+            item.original_language = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/280px-Flag_of_France.svg.png'
+          } else{
+            item.original_language = 'https://theitaliancommunity.co.uk/blog/wp-content/uploads/bandiera-inghilterra.png'
+          }
         });
       })
       .catch((error) => alert('errori'))
@@ -40,8 +51,19 @@ var nuovo = new Vue({
         this.arraySerie = result.data.results
         console.log(result.data.results);
         this.arraySerie.forEach((item, i) => {
-          item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
-          console.log(item.original_name);
+          // item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
+          if (item.poster_path == null){
+            item.poster_path = 'https://media.istockphoto.com/vectors/coming-soon-vector-template-design-vector-id984996502?k=6&m=984996502&s=612x612&w=0&h=wbMAxPZZRht9DPspDS1NvM4TLlBCCajXnJfSmcckqZ8='
+          } else{
+            item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
+          }
+          if (item.original_language == 'es'){
+            item.original_language = 'https://www.resolfin.com/wp-content/uploads/2018/02/spagna-100x150.png'
+          } else if (item.original_language == 'fr'){
+            item.original_language = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/280px-Flag_of_France.svg.png'
+          } else{
+            item.original_language = 'https://theitaliancommunity.co.uk/blog/wp-content/uploads/bandiera-inghilterra.png'
+          }
         });
 
       })
