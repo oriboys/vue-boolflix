@@ -3,7 +3,10 @@ var nuovo = new Vue({
   data:{
     ricerca: '',
     arrayFilm: '',
-    arraySerie: ''
+    arraySerie: '',
+    immagine: 'none',
+    descr: 'none',
+    indice: ''
 
 
   },
@@ -68,6 +71,17 @@ var nuovo = new Vue({
 
       })
       .catch((error) => alert('errori'))
-    }
+    },
+    descrizioneOn(index){
+      this.indice = index
+      this.descr = 'show'
+      this.immagine = 'none'
+    },
+    descrizioneOff(index){
+      this.indice = index
+      this.descr = 'none'
+      this.immagine = 'show'
+    },
+
   }
 })

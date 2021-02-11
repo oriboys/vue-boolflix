@@ -23,21 +23,25 @@
     </div>
     <!-- main -->
     <div class="main">
-      <div class="file" v-for="element in arrayFilm">
-        <img :src='element.poster_path'  alt="">
-        <p><span>Title: </span>{{element.title}}</p>
-        <p><span>Original Title: </span>{{element.original_title}}</p>
-        <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
-        <img class="bandiera" :src="element.original_language" alt="">
-        <p><span>Vote: </span>{{element.vote_average}}</p>
+      <div class="file" v-for="(element, index) in arrayFilm" @mouseover='descrizioneOn(index)' @mouseleave='descrizioneOff(index)'>
+        <img class="copertina" :src='element.poster_path'  alt=""  :class="(indice == index) ? immagine :  ''">
+        <div class="description" v-if='indice == index' :class='descr'>
+          <p><span>Title: </span>{{element.title}}</p>
+          <p><span>Original Title: </span>{{element.original_title}}</p>
+          <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
+          <img class="bandiera" :src="element.original_language" alt="">
+          <p><span>Vote: </span>{{element.vote_average}}</p>
+        </div>
       </div>
-      <div class="file" v-for="element in arraySerie">
-        <img :src='element.poster_path'  alt="">
-        <p><span>Title: </span>{{element.name}}</p>
-        <p><span>Original Title: </span>{{element.original_name}}</p>
-        <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
-        <img class="bandiera" :src="element.original_language" alt="">
-        <p><span>Vote: </span>{{element.vote_average}}</p>
+      <div class="file" v-for="(element, index) in arraySerie" @mouseover='descrizioneOn(index)' @mouseleave='descrizioneOff(index)'>
+        <img class="copertina" :src='element.poster_path'  alt=""  :class="(indice == index) ? immagine :  ''">
+        <div class="description" v-if='indice == index' :class='descr'>
+          <p><span>Title: </span>{{element.name}}</p>
+          <p><span>Original Title: </span>{{element.original_name}}</p>
+          <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
+          <img class="bandiera" :src="element.original_language" alt="">
+          <p><span>Vote: </span>{{element.vote_average}}</p>
+        </div>
       </div>
     </div>
   </div>
