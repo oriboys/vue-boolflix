@@ -29,7 +29,7 @@ var nuovo = new Vue({
     .get('https://api.themoviedb.org/3/search/movie?api_key=7b637101d1d50dc2f48259a676913f3c&language=en-US&query=matrix')
     .then((result) => {
         this.arrayTutto = result.data.results
-        console.log(this.arrayTutto);
+        // console.log(this.arrayTutto);
         this.arrayTutto.forEach((item, i) => {
           var elemento = item;
 
@@ -43,7 +43,19 @@ var nuovo = new Vue({
                 elemento.genre_ids.push(item.name)
               }
             })
-            console.log(elemento.genre_ids);
+            item.attori = []
+            axios
+            .get('https://api.themoviedb.org/3/movie/' + elemento.id + '/credits?language=en-US&api_key=7b637101d1d50dc2f48259a676913f3c')
+            .then((result) => {
+                // result.data.cast.forEach((item) =>{
+                //   attori.push(item.name)
+                // })
+                for (var i = 0; i < 5; i++){
+                  item.attori.push(result.data.cast[i].name)
+                }
+
+            })
+            // console.log(elemento.genre_ids);
             // console.log(this.types);
           })
           // console.log(item.genre_ids);
@@ -89,7 +101,7 @@ var nuovo = new Vue({
       })
       .then((result) =>{
         this.arrayFilm = result.data.results
-        console.log(this.arrayFilm);
+        // console.log(this.arrayFilm);
         // this.arrayFilm.forEach((item, i) => {
         //   item.stelle = [];
         //   // immagine
@@ -130,10 +142,10 @@ var nuovo = new Vue({
       })
       .then((result) =>{
         this.arrayTutto = [...this.arrayFilm,...result.data.results]
-        console.log(this.arrayTutto);
+        // console.log(this.arrayTutto);
         this.arrayTutto.forEach((item, i) => {
           var elemento = item;
-
+          // aggiungere nome categoria film
           axios
           .get('https://api.themoviedb.org/3/genre/movie/list?api_key=7b637101d1d50dc2f48259a676913f3c&language=en-US')
           .then((result)=> {
@@ -144,10 +156,24 @@ var nuovo = new Vue({
                 elemento.genre_ids.push(item.name)
               }
             })
-            console.log(elemento.genre_ids);
             // console.log(this.types);
           })
-          item.stelle = [];
+          console.log(elemento.cast);
+          // aggiunta attori
+          item.attori = []
+          axios
+          .get('https://api.themoviedb.org/3/movie/' + elemento.id + '/credits?language=en-US&api_key=7b637101d1d50dc2f48259a676913f3c')
+          .then((result) => {
+              // result.data.cast.forEach((item) =>{
+              //   attori.push(item.name)
+              // })
+              for (var i = 0; i < 5; i++){
+                item.attori.push(result.data.cast[i].name)
+              }
+
+          })
+          console.log(item.attori);
+
           // immagini
           // console.log(item);
           // item.poster_path = 'http://image.tmdb.org/t/p/w500/'+ item.poster_path;
@@ -167,6 +193,7 @@ var nuovo = new Vue({
             item.original_language ='https://images-na.ssl-images-amazon.com/images/I/61z5tXoJWXL._AC_SY450_.jpg'
           }
           // stelle
+          item.stelle = [];
           item.vote_average = Math.ceil(item.vote_average / 2);
           if (item.vote_average < 1){
             item.vote_average = 1
@@ -174,7 +201,6 @@ var nuovo = new Vue({
           for (var i = 0; i < item.vote_average; i++){
             item.stelle.push('stella')
           }
-          // console.log(item.stelle);
         });
 
       })
@@ -192,11 +218,8 @@ var nuovo = new Vue({
     },
     seleziona(){
       this.type = document.getElementById('opzione').value;
-      console.log(this.type);
-      // if (this.type != 'all') {
-      //   this.type = parseInt(this.type)
-      // }
-      console.log(this.type);
+
+
     }
 
   }

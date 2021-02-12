@@ -45,7 +45,7 @@
           <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
           <img class="bandiera" :src="element.original_language" alt="">
           <p class="voto"><span>Vote: </span> <span><i class="fas fa-star"  v-for='element in element.stelle' ></i> </span></p>
-          <p> <span>Actors: </span></p>
+          <p> <span>Actors: </span> <span v-for='actor in element.attori'>{{actor}}</span></p>
           <p class="trama">{{element.overview}}</p>
         </div>
       </div>
