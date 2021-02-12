@@ -27,22 +27,21 @@
     </div>
     <!-- main -->
     <div class="main">
-      <div v-if='type == "all" || element.genre_ids.includes(type) ' class="file" v-for="(element, index) in arrayFilm" @mouseover='descrizioneOn(index)' @mouseleave='descrizioneOff(index)'>
+      <!-- <div v-if='type == "all" || element.genre_ids.includes(type) ' class="file" v-for="(element, index) in arrayFilm" @mouseover='descrizioneOn(index)' @mouseleave='descrizioneOff(index)'>
         <img class="copertina" :src='element.poster_path'  alt=""  :class="(indice == index) ? immagine :  ''">
         <div class="description" v-if='indice == index' :class='descr'>
           <p><span>Title: </span>{{element.title}}</p>
           <p><span>Original Title: </span>{{element.original_title}}</p>
-          <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
           <img class="bandiera" :src="element.original_language" alt="">
           <p class="voto"><span>Vote: </span> <span > <i class="fas fa-star" v-for='element in element.stelle'></i> </span></p>
           <p class="trama">{{element.overview}}</p>
         </div>
-      </div>
-      <div v-if='type == "all" || element.genre_ids.includes(type) ' class="file" v-for="(element, index) in arraySerie" @mouseover='descrizioneOn(index)' @mouseleave='descrizioneOff(index)'>
+      </div> -->
+      <div v-if='type == "all" || element.genre_ids.includes(type) ' class="file" v-for="(element, index) in arrayTutto" @mouseover='descrizioneOn(index)' @mouseleave='descrizioneOff(index)'>
         <img class="copertina" :src='element.poster_path'  alt=""  :class="(indice == index) ? immagine :  ''">
         <div class="description" v-if='indice == index' :class='descr'>
-          <p><span>Title: </span>{{element.name}}</p>
-          <p><span>Original Title: </span>{{element.original_name}}</p>
+          <p><span>Title: </span>{{element.title}}{{element.name}}</p>
+          <p><span>Original Title: </span>{{element.original_title}} {{element.original_name}}</p>
           <!-- <p><span>Language: </span>{{element.original_language}}</p> -->
           <img class="bandiera" :src="element.original_language" alt="">
           <p class="voto"><span>Vote: </span> <span><i class="fas fa-star"  v-for='element in element.stelle' ></i> </span></p>
